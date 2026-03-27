@@ -24,15 +24,12 @@ jobs:
             echo "Connected to EC2"
 
             # Clone repo if not present
-            if [ ! -d Docker1 ]; then
+            if [ ! -d docker1 ]; then
               git clone https://${{ secrets.GH_PAT }}@github.com/ajid213/docker1.git
             fi
 
-            cd Docker1
+            cd docker1
             git pull https://${{ secrets.GH_PAT }}@github.com/ajid213/docker1.git main
 
-            docker stop pythonapp || true
-            docker rm pythonapp || true
-
-            docker build -t pythonapp .
-            docker run -d -p 5000:5000 --name pythonapp pythonapp
+            docker compose down
+            docker compose up -d --build
