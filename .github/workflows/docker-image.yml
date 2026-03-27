@@ -25,11 +25,11 @@ jobs:
 
             # Clone repo if not present
             if [ ! -d Docker1 ]; then
-              git clone https://${{ secrets.GH_PAT }}@github.com/ajid213/Docker1.git
+              git clone https://${{ secrets.GH_PAT }}@github.com/ajid213/docker1.git
             fi
 
             cd Docker1
-            git pull https://${{ secrets.GH_PAT }}@github.com/ajid213/Docker1.git main
+            git pull https://${{ secrets.GH_PAT }}@github.com/ajid213/docker1.git main
 
             docker stop pythonapp || true
             docker rm pythonapp || true
